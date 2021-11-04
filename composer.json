@@ -1,5 +1,5 @@
 {
-  "name": "intdev-gmbh/responsive_svg",
+  "name": "drupal/responsive_svg",
   "type": "drupal-module",
   "description": "Responsive SVG",
   "minimum-stability": "dev",
