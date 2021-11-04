@@ -85,7 +85,7 @@ class ResponsiveSvgTwigExtension extends \Twig_Extension
     // Parse svg file and read viewBox attribute.
     $svg = $this->loadContent($pathResolved);
     if ($svg === false) {
-      drupal_set_message('Cannot find SVG ' . $uri);
+      \Drupal::messenger()->addStatus('Cannot find SVG ' . $uri);
       return '';
     }
 
@@ -98,14 +98,14 @@ class ResponsiveSvgTwigExtension extends \Twig_Extension
     }
 
     if (!$item->count()) {
-      drupal_set_message('Cannot find SVG element for ' . $uri);
+      \Drupal::messenger()->addStatus('Cannot find SVG element for ' . $uri);
       return '';
     }
 
     $viewBox = $item->attr('viewBox');
 
     if (strlen($viewBox) == 0) {
-      drupal_set_message('Cannot find viewBox attribute in ' . $uri);
+      \Drupal::messenger()->addStatus('Cannot find viewBox attribute in ' . $uri);
       return '';
     }
 
