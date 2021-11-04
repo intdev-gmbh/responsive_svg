@@ -1,4 +1,7 @@
+# Responsive SVG
+
 Provides a twig filter for rendering SVG stacks with cross-browser responsive resizing.
+See https://www.drupal.org/project/responsive_svg
 
 ## Features
 
