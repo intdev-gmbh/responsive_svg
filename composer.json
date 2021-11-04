@@ -1,0 +1,7 @@
+{
+  "name": "intdev-gmbh/responsive_svg",
+  "type": "drupal-module",
+  "description": "Responsive SVG",
+  "minimum-stability": "dev"
+  "homepage": "https://www.drupal.org/project/responsive_svg"
+}
