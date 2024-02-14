@@ -1,4 +1,4 @@
 name: Responsive SVG
 type: module
 description: "Provides a twig filter for rendering SVG stacks with cross-browser responsive resizing."
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10

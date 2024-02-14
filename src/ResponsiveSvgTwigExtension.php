@@ -3,15 +3,17 @@
 namespace Drupal\responsive_svg;
 
 use Symfony\Component\DomCrawler\Crawler;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-class ResponsiveSvgTwigExtension extends \Twig_Extension
+class ResponsiveSvgTwigExtension extends AbstractExtension
 {
 
   public function getFilters()
   {
     return array(
-      new \Twig_SimpleFilter('responsiveSVG', array($this, 'generateResponsiveSvg'), ['is_safe' => ['html']]),
-      new \Twig_SimpleFilter('responsiveSourceSVG', array($this, 'generateResponsiveSourceSvg'), ['is_safe' => ['html']]),
+      new TwigFilter('responsiveSVG', array($this, 'generateResponsiveSvg'), ['is_safe' => ['html']]),
+      new TwigFilter('responsiveSourceSVG', array($this, 'generateResponsiveSourceSvg'), ['is_safe' => ['html']]),
     );
   }
 
@@ -29,7 +31,7 @@ class ResponsiveSvgTwigExtension extends \Twig_Extension
     preg_match('/@([^\/]+)/', $pathResolved, $matches);
     if (count($matches)) {
       $theme_name = $matches[1];
-      $theme_path = drupal_get_path('theme', $theme_name);
+      $theme_path = \Drupal::service('extension.list.theme')->getPath($theme_name);
       if (strlen($theme_path )> 0) {
         $pathResolved = str_replace('@' . $theme_name, $theme_path , $pathResolved);
       }
@@ -66,7 +68,7 @@ class ResponsiveSvgTwigExtension extends \Twig_Extension
 
     $config = array_merge($default, (array) $config);
 
-    list($path, $identifier) = explode('#', $uri);
+    [$path, $identifier] = explode('#', $uri);
 
     $module_config = \Drupal::config('responsive_svg.config');
     $mappings = $module_config->get('mappings');
@@ -110,7 +112,7 @@ class ResponsiveSvgTwigExtension extends \Twig_Extension
     }
 
     // Build markup
-    list($x, $y, $width, $height) = explode(' ', $viewBox);
+    [$x, $y, $width, $height] = explode(' ', $viewBox);
 
     $width += $config['offsetX'];
     $height += $config['offsetY'];

@@ -82,7 +82,7 @@ class ConfigForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     $config_text = $form_state->getValue('config') ?: 'mappings:';
     try {
       $form_state->set('config', Yaml::decode($config_text));
@@ -97,7 +97,7 @@ class ConfigForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $config = $form_state->get('config');
     $this->config('responsive_svg.config')
       ->setData($config)
