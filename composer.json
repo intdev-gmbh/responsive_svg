@@ -5,5 +5,7 @@
   "minimum-stability": "dev",
   "homepage": "https://www.drupal.org/project/responsive_svg",
   "require": {
-    "symfony/dom-crawler": "^6.4"  }
+    "symfony/dom-crawler": "^6.4",
+    "symfony/css-selector": "^6.4"
+  }
 }
