@@ -3,5 +3,7 @@
   "type": "drupal-module",
   "description": "Responsive SVG",
   "minimum-stability": "dev",
-  "homepage": "https://www.drupal.org/project/responsive_svg"
+  "homepage": "https://www.drupal.org/project/responsive_svg",
+  "require": {
+    "symfony/dom-crawler": "^6.4"  }
 }
